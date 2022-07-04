@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Lignes{% endblock %}
+
+{% block body %}
+    <h1>Edit Lignes</h1>
+
+    {{ include('lignes/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('lignes_index') }}">back to list</a>
+
+    {{ include('lignes/_delete_form.html.twig') }}
+{% endblock %}

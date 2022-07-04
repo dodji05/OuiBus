@@ -1,0 +1,131 @@
+<!-- Banner Section Starts Here -->
+<section class="banner-section"
+         style="background: url(assets/images/frontend/banner/61f118f07f1151643190512.png) repeat-x bottom;">
+    <div class="container">
+        <div class="banner-wrapper">
+            <div class="banner-content">
+                <h1 class="title">Réserver votre place , facilement et en toute securité</h1>
+                <a href="{{path('obtenir_ticket')}}" class="cmn--btn">Obtenir un ticket</a>
+            </div>
+            <div class="ticket-form-wrapper">
+                <div class="ticket-header nav-tabs nav border-0">
+                    <h4 class="title">Rechercher un voyage</h4>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="one-way">
+                     {{ form_start(form,{
+                         attr : {
+                                     'class' : "ticket-form row g-3 justify-content-center m-0"
+                         }
+                     }) }}
+                            
+                            <div class="col-md-6">
+                                <div class="form--group">
+                                    <i class="las la-location-arrow"></i>
+                                      {{ form_widget(form.depart) }}
+                                    {# <select class="form--control select2" name="pickup">
+                                        <option value="">Pickup Point</option>
+                                        <option value="1">Kansas</option>
+                                        <option value="2">Dallas</option>
+                                        <option value="3">Wichita</option>
+                                        <option value="4">Emi Davenport</option>
+                                        <option value="5">Echo Bass</option>
+                                    </select> #}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form--group">
+                                    <i class="las la-map-marker"></i>
+                                     {{ form_widget(form.destination) }}
+                                    {# <select name="destination" class="form--control select2">
+                                        <option value="">Dropping Point</option>
+                                        <option value="1">Kansas</option>
+                                        <option value="2">Dallas</option>
+                                        <option value="3">Wichita</option>
+                                        <option value="4">Emi Davenport</option>
+                                        <option value="5">Echo Bass</option>
+                                    </select> #}
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form--group">
+                                    <i class="las la-calendar-check"></i>
+                                       {{ form_widget(form.date) }}
+                                    <input type="text" name="date_of_journey" class="form--control datepicker"
+                                           placeholder="Departure Date" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form--group">
+                                    <button>Rechercher maintemant</button>
+                                </div>
+                            </div>
+                       {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shape">
+        <img src="assets/images/frontend/banner/6209144de6ed01644762189.png" alt="bg">
+    </div>
+</section>
+
+<!-- Working Process Section Starts Here -->
+<section class="working-process padding-top padding-bottom">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-10">
+                <div class="section-header text-center">
+                    <h2 class="title">Get Your Tickets With Just 3 Steps</h2>
+                    <p>Have a look at our popular reason. why you should choose you bus. Just a Bus and get a ticket for
+                        your great journey. !</p>
+                </div>
+            </div>
+        </div>
+        <div class="row g-4 gy-md-5 justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-10">
+                <div class="working-process-item">
+                    <div class="thumb-wrapper">
+                        <span>01</span>
+                        <div class="thumb">
+                            <i class="las la-search"></i></div>
+                    </div>
+                    <div class="content">
+                        <h4 class="title">Search Your Bus</h4>
+                        <p>Choose your origin, destination,Just choose a Bus journey dates and search for buses</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-10">
+                <div class="working-process-item">
+                    <div class="thumb-wrapper">
+                        <span>02</span>
+                        <div class="thumb">
+                            <i class="las la-ticket-alt"></i></div>
+                    </div>
+                    <div class="content">
+                        <h4 class="title">Choose The Ticket</h4>
+                        <p>Choose your origin, destination,Just a Bus for your great journey dates and search for
+                            buses</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-10">
+                <div class="working-process-item">
+                    <div class="thumb-wrapper">
+                        <span>03</span>
+                        <div class="thumb">
+                            <i class="las la-money-bill-wave-alt"></i></div>
+                    </div>
+                    <div class="content">
+                        <h4 class="title">Pay Bill</h4>
+                        <p>Choose your origin, destination,choose a Bus for your great journey dates and search for
+                            buses</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Working Process Section Ends Here -->

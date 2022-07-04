@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Escales{% endblock %}
+
+{% block body %}
+    <h1>Create new Escales</h1>
+
+    {{ include('escales/_form.html.twig') }}
+
+    <a href="{{ path('escales_index') }}">back to list</a>
+{% endblock %}

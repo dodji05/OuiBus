@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<section class="inner-banner bg_img" style="background: url(../../assets/images/frontend/breadcrumb/61f14e10b48871643204112.jpg) center">
+		<div class="container">
+			<div
+				class="inner-banner-content">{# <h2 class="title">{{ voyages.ligne.VilleDepart.NomVille}} => {{ voyages.ligne.VilleArrive.NomVille}} #}
+			</h2>
+			{# <h4 class="title">Départ : {{ voyages.DateDepart ? voyages.DateDepart|date('Y-m-d') : '' }} {{ voyages.HeureDepart ? voyages.HeureDepart|date('H:i') : '' }}</h4> #}
+
+		</div>
+	</div>
+</section>
+<div class="padding-top padding-bottom">
+	<div class="container">
+		<div class="row gx-xl-5 gy-4 gy-sm-5">
+			<div class="col-lg-7 col-md-6">
+
+				<div class="card">
+					<div class="card-body">
+						{{ form_start(registrationForm) }}
+				
+						{{ form_row(registrationForm.nom) }}
+						{{ form_row(registrationForm.prenoms) }}
+					
+						{{ form_row(registrationForm.telephone) }}
+							{{ form_row(registrationForm.email) }}
+								{{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+						{{ form_row(registrationForm.agreeTerms) }}
+
+						<button type="submit" class="btn btn-primary">S'inscrire</button>
+						<button class="btn btn-success"> Se connecter </button>
+						{{ form_end(registrationForm) }}
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-5 col-md-6">
+				<div class="card">
+					<div class="card-header">
+						<h4>
+							Détails de la Réservation
+						</h4>
+					</div>
+					<div class="card-body">
+						<table class="table">
+							<tbody>
+								<tr>
+									<th>Ligne</th>
+									<td>
+										{{ ligne.VilleDepart.NomVille}}
+										-
+										{{ ligne.VilleArrive.NomVille}}
+									</td>
+								</tr>
+								<tr>
+									<th>Lieux de départ</th>
+									<td>{{ reservation.VilleDepart.NomVille}}</td>
+								</tr>
+								<tr>
+									<th>Destination</th>
+									<td>{{ reservation.VilleArrivee.NomVille}}</td>
+								</tr>
+								<tr>
+									<th>Date départ</th>
+									<td>
+										{{ reservation.voyage.DateDepart ? reservation.voyage.DateDepart|date('Y-m-d') : '' }}
+										{{ reservation.voyage.HeureDepart ? reservation.voyage.HeureDepart|date('H:i') : '' }}</td>
+								</tr>
+								<tr>
+									<th>Prix du billet</th>
+									<td>{{ reservation.prix}}
+										FCFA</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div></div>{% endblock %}
+

@@ -1,0 +1,32 @@
+{% extends 'base_admin.html.twig' %}
+
+
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-md-offset-2 col-sm-offset-2">
+            <div class="panel panel-bd lobidrag">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <h4>
+                            <a href="{{ path('voyages_escales_index') }}" class="btn btn-sm btn-success"
+                               title="List"><i class="fa fa-list"></i> Liste</a>
+                            {#                            <?php if($fleet_type->id): ?> #}
+                            {#                            <a href="<?php echo base_url('fleet/fleet_type/form') ?>" class="btn btn-sm btn-info" #}
+                            {#                               title="Add"><i class="fa fa-plus"></i> <?php echo display('add') ?></a> #}
+                            {#                            <?php endif; ?> #}
+                        </h4>
+                    </div>
+                </div>
+                <div class="panel-body">
+
+                    {{ include('admin/voyage/escales/_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

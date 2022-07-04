@@ -1,0 +1,72 @@
+{% extends 'base_admin.html.twig' %}
+
+
+
+
+{% block body %}
+  
+  <div class="row">
+        <div class="col-sm-12 col-md-12 ">
+            <div class="panel panel-bd lobidrag">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <h4>
+                            <a href="{{ path('voyages_ville_new') }}" class="btn btn-sm btn-info"
+                               title="List"><i class="fa fa-list"></i> Ajouter</a>
+                            {#                            <?php if($fleet_type->id): ?>#}
+                            {#                            <a href="<?php echo base_url('fleet/fleet_type/form') ?>" class="btn btn-sm btn-info"#}
+                            {#                               title="Add"><i class="fa fa-plus"></i> <?php echo display('add') ?></a>#}
+                            {#                            <?php endif; ?>#}
+                        </h4>
+                    </div>
+                </div>
+                <div class="panel-body">
+ <table class="datatable table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Ligne</th>
+                <th> Ville de départ</th>
+                <th> Ville d'arrivé</th>
+                <th>Date & heure de Depart</th>
+                <th>Bus</th>
+                <th>Sieges Total</th>
+                 <th>Nombres de reservation</th>
+                <th>Sieges restants</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for voyage in voyages %}
+            <tr>
+                <td>{{ voyage.Ligne.NomLigne }}</td>
+                 <td>{{ voyage.Ligne.VilleDepart.NomVille }}</td>
+                  <td>{{ voyage.Ligne.VilleArrive.NomVille }}</td>
+                <td>{{ voyage.DateDepart ? voyage.DateDepart|date('Y-m-d') : '' }} - {{ voyage.HeureDepart ? voyage.HeureDepart|date('H:i:s') : '' }}</td>
+                <td>{{ voyage.bus.NumeroVehicule }}</td> 
+                  <td>{{ voyage.bus.TypeVehicule.NbreSiege }}</td>  
+                <td>{{ voyage.Status ? 'Yes' : 'No' }}</td>
+                <td>
+                  {{ include('admin/voyage/voyages/_delete_form.html.twig') }}
+                                    <a href="{{ path('voyages_voyages_edit', {'id': voyage.id}) }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="Update"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+
+                    {# <a href="{{ path('voyages_show', {'id': voyage.id}) }}">show</a>
+                    <a href="{{ path('voyages_edit', {'id': voyage.id}) }}">edit</a> #}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+   
+{% endblock %}

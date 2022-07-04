@@ -1,0 +1,74 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title> {% block admin_title %}
+    {% endblock %}
+</title>
+
+<!-- Favicon and touch icons -->
+{# <link rel="shortcut icon" href="<?php echo base_url((!empty($setting->favicon)?$setting->favicon:'assets/img/icons/favicon.png')) }}" type="image/x-icon"> #}
+
+
+<!-- Start Global Mandatory Style -->
+<!-- jquery-ui css -->
+<link href="{{ asset('admin/assets/css/jquery-ui.min.css') }}" rel="stylesheet" type="text/css"/>
+
+<!-- Bootstrap -->
+<link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+<!-- Bootstrap rtl -->
+{#<?php if (($setting->site_align=='RTL')) { }}#}
+{#<link href="{{ asset('admin/assets/css/bootstrap-rtl.min.css') }}" rel="stylesheet" type="text/css"/>#}
+{#<?php } }}#}
+
+<!-- Lobipanel css -->
+<link href="{{ asset('admin/assets/css/lobipanel.min.css') }}" rel="stylesheet" type="text/css"/>
+<!-- Pace css -->
+<link href="{{ asset('admin/assets/css/flash.css') }}" rel="stylesheet" type="text/css"/>
+<!-- Font Awesome -->
+<link href="{{ asset('admin/assets/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
+<!-- Pe-icon -->
+<link href="{{ asset('admin/assets/css/pe-icon-7-stroke.css') }}" rel="stylesheet" type="text/css"/>
+<!-- Themify icons -->
+<link href="{{ asset('admin/assets/css/themify-icons.css') }}" rel="stylesheet" type="text/css"/>
+<!-- select2.min -->
+<link href="{{ asset('admin/assets/css/select2.min.css') }}" rel="stylesheet" type="text/css"/>
+
+
+<!-- Tokenfield CSS -->
+<link href="{{ asset('admin/assets/css/tokenfield-typeahead.min.css') }}" type="text/css" rel="stylesheet">
+<link href="{{ asset('admin/assets/css/bootstrap-tokenfield.min.css') }}" type="text/css" rel="stylesheet">
+
+
+<!-- timepicker -->
+<link href="{{ asset('admin/assets/css/jquery-ui-timepicker-addon.min.css') }}" rel="stylesheet" type="text/css"/>
+<!-- timepicker -->
+<link href="{{ asset('admin/assets/css/jquery.simple-dtpicker.css') }}" rel="stylesheet" type="text/css"/>
+<!-- datatable -->
+<link href="{{ asset('admin/assets/datatables/css/dataTables.min.css') }}" rel="stylesheet" type="text/css"/>
+<!-- End Global Mandatory Style
+
+<!-- Theme style -->
+<link href="{{ asset('admin/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css"/>
+<!-- Theme style rtl -->
+
+
+<!-- Include module style -->
+
+{#<link href=http://localhost:5050/application/modules/account/assets/css/style.css rel="stylesheet">#}
+
+{#<link href=http://localhost:5050/application/modules/agent/assets/css/style.css rel="stylesheet">#}
+{#<link href=http://localhost:5050/application/modules/enquiry/assets/css/style.css rel="stylesheet">#}
+{#<link href=http://localhost:5050/application/modules/fitness/assets/css/style.css rel="stylesheet">#}
+{#<link href=http://localhost:5050/application/modules/fleet/assets/css/style.css rel="stylesheet">#}
+{#<link href=http://localhost:5050/application/modules/hr/assets/css/style.css rel="stylesheet">#}
+{#<link href=http://localhost:5050/application/modules/offer/assets/css/style.css rel="stylesheet">#}
+{#<link href=http://localhost:5050/application/modules/price/assets/css/style.css rel="stylesheet">#}
+{#<link href=http://localhost:5050/application/modules/reports/assets/css/style.css rel="stylesheet">#}
+{#<link href=http://localhost:5050/application/modules/ticket/assets/css/style.css rel="stylesheet">#}
+{#<link href=http://localhost:5050/application/modules/trip/assets/css/style.css rel="stylesheet">#}
+{#<link href=http://localhost:5050/application/modules/website/assets/css/style.css rel="stylesheet">#}
+
+
+<!-- jQuery -->
+<script src="{{ asset('admin/assets/js/jquery-1.12.4.min.js') }}" type="text/javascript"></script>

@@ -1,0 +1,68 @@
+{% extends 'base_admin.html.twig' %}
+
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12 col-md-12 ">
+            <div class="panel panel-bd lobidrag">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <h4>
+                            <a href="{{ path('flotte_type_vehicule_new') }}" class="btn btn-sm btn-info"
+                               title="List"><i class="fa fa-list"></i> Ajouter</a>
+                            {#                            <?php if($fleet_type->id): ?>#}
+                            {#                            <a href="<?php echo base_url('fleet/fleet_type/form') ?>" class="btn btn-sm btn-info"#}
+                            {#                               title="Add"><i class="fa fa-plus"></i> <?php echo display('add') ?></a>#}
+                            {#                            <?php endif; ?>#}
+                        </h4>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="datatable table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>N° Bus</th>
+                            <th>N° Moteur</th>
+                            <th>N° Chassis</th>
+                            <th>Marque</th>
+                            <th>Model</th>
+                            <th>Status</th>
+
+                            <th>actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for enregistrement_vehicule in enregistrement_vehicules %}
+                            <tr>
+                                <td>{{ enregistrement_vehicule.id }}</td>
+                                <td>{{ enregistrement_vehicule.NumeroVehicule }}</td>
+                                <td>{{ enregistrement_vehicule.NumeroMoteur }}</td>
+                                <td>{{ enregistrement_vehicule.NumeroChassis }}</td>
+                                <td>{{ enregistrement_vehicule.Marque }}</td>
+                                <td>{{ enregistrement_vehicule.Model }}</td>
+                                <td>{{ enregistrement_vehicule.status ? 'Active' : 'Inactive' }}</td>
+
+                                <td>
+                                    {{ include('admin/flotte/enregistrement/_delete_form.html.twig') }}
+                                    <a href="{{ path('flotte_enregistrement_vehicule_show', {'id': enregistrement_vehicule.id}) }}">show</a>
+                                    <a href="{{ path('flotte_enregistrement_vehicule_edit', {'id': enregistrement_vehicule.id}) }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="Update"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="8">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

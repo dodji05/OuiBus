@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<section class="inner-banner bg_img" style="background: url(../../assets/images/frontend/breadcrumb/61f14e10b48871643204112.jpg) center">
+		<div class="container">
+			<div class="inner-banner-content">
+				<h2 class="title">{{ voyages.ligne.VilleDepart.NomVille}} => {{ voyages.ligne.VilleArrive.NomVille}}
+				</h2>
+				<h4 class="title">Départ : {{ voyages.DateDepart ? voyages.DateDepart|date('Y-m-d') : '' }} {{ voyages.HeureDepart ? voyages.HeureDepart|date('H:i') : '' }}</h4>
+				
+			</div>
+		</div>
+	</section>
+	<div class="padding-top padding-bottom">
+		<div class="container">
+			<div class="row gx-xl-5 gy-4 gy-sm-5 justify-content-center">
+				<div class="col-lg-4 col-md-6">
+					<div class="seat-overview-wrapper">
+						{{ form_start(form) }}
+						  {{ form_widget(form) }}
+						<button class="book-bus-btn" data-bs-dismiss="modal">{{ button_label|default('Continue') }}</button>
+						{{ form_end(form) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="bookConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> Confirm Booking</h5>
+                <button type="button" class="w-auto btn--close" data-bs-dismiss="modal"><i class="las la-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <strong class="text-dark">Are you sure to book these seats?</strong>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn--danger w-auto btn--sm px-3" data-bs-dismiss="modal">
+                    Close                </button>
+                <button type="submit" class="btn btn--success btn--sm w-auto" id="btnBookConfirm">Confirm                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		function prixEscale( e, elem ) {
+e.preventDefault();
+$( '#reservation_front_Prix' ).val( '' )
+var $voyages_id = $( elem ).val();
+var $idligne = 1;
+var $depart_id = $( '#reservation_front_VilleDepart' ).val();
+var $arrive_id = $( '#reservation_front_VilleArrivee' ).val();
+// var parent = $(elem).closest('tr');
+// alert(tel); reservation_VilleDepart reservation_VilleArrivee reservation_front_VilleDepart
+// if(tel.length > 3){
+$.ajax( {
+type: 'get',
+// url: Routing.generate('ajax_info_voyages_reservation', {id: voyages_id}),
+url: "/requete-ajax/prix-escale/" + $idligne + "/" + $depart_id + "/" + $arrive_id,
+dataType: "json",
+// data: {
+//     term: request.term
+// },
+success: function ( data ) {
+$( '#reservation_front_Prix' ).val( data.price )
+
+// parent.find('.vente_prix').val(data.prix);
+// var newLink = document.createElement('a');
+
+}
+} )
+// }
+
+}
+	</script>
+{% endblock %}
+

@@ -1,0 +1,99 @@
+<div class="sidebar">
+    <!-- Sidebar user panel -->
+    {#    <?php if($this->uri->segment(2) !=='User'){?> #}
+    <div class="user-panel text-center">
+        <div class="image">
+            {#            <?php $image = $this->session->userdata('image') ?> #}
+            <img src="{{ asset('admin/assets/img/icons/default.jpg') }}" class="img-circle"
+                 alt="User Image">
+        </div>
+        <div class="info">
+            <p>Maria ASSOGBA</p>
+            <a href="#"><i class="fa fa-circle text-success"></i> Admin</a>
+        </div>
+    </div>
+    {#    <?php } ?> #}
+    <ul class="sidebar-menu">
+        <li class="treeview active">
+            <a href="#"><i class="ti-home"></i>
+                <span>Tableau de bord</span>
+            </a>
+        </li>
+
+        <li class="treeview">
+
+            <a href="javascript:void(0)">
+                <i class="fa fa-car"></i> <span>Flotte</span>
+                <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+            </a>
+
+            <ul class="treeview-menu">
+                <!-- endforeach -->
+
+                <!-- multilevel menu/link -->
+                <!-- extract $label to compare with segment -->
+                <li class="active">
+                    <a href="#">Type de vehicule
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="active">
+                            <a href="{{ path('flotte_type_vehicule_new') }}">Ajouter type de
+                                Vehicule </a></li>
+                        <li class="">
+                            <a href="{{ path('flotte_type_vehicule_index') }}">LIste type de vÃ©hicule</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <!-- endif -->
+                <!-- endforeach -->
+
+                <!-- multilevel menu/link -->
+                <!-- extract $label to compare with segment -->
+                <li class="">
+                    <a href="#">FacilitÃ©s du vÃ©hicule <span class="pull-right-container"><i
+                                    class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu ">
+                        <li class="active"><a href="http://localhost:5050/fleet/fleet_facilities/form">Ajouter les
+                                facilitÃ©s</a></li>
+                        <li class=""><a href="http://localhost:5050/fleet/fleet_facilities/index">Liste de
+                                facilitÃ©s</a></li>
+
+                    </ul>
+                </li>
+
+
+                <!-- endif -->
+                <!-- endforeach -->
+
+                <!-- multilevel menu/link -->
+                <!-- extract $label to compare with segment -->
+                <li class="">
+                    <a href="#">Enregistrement du vÃ©hicule <span class="pull-right-container"><i
+                                    class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu ">
+                        <li class="active">
+                            <a href="{{ path('flotte_enregistrement_vehicule_new') }}"> Enregistrer un vehicule</a>
+                        </li>
+                        <li class="">
+                            <a href="{{ path('flotte_enregistrement_vehicule_index') }}">Vehicule enregistrés</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <!-- endif -->
+                <!-- endforeach -->
+            </ul>
+        </li>
+
+    </ul>
+</div>

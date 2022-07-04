@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>
+                            Lignes
+                        </th>
+                        <th>
+                            Départ
+                        </th>
+                        <th>
+                            Destination
+                        </th>
+                        <th>
+                            Date & heure de départ
+                        </th>
+                        <th>
+                            Esacales
+                        </th>
+                        <th>
+                            Prix
+                        </th>
+                        <th>
+                                Places disponible
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for voyage in voyages %}
+                        <tr>
+                            <td>{{ voyage.Ligne.NomLigne }}</td>
+                            <td>{{ voyage.Ligne.VilleDepart.NomVille }}</td>
+                            <td>{{ voyage.Ligne.VilleArrive.NomVille }}</td>
+                            <td>{{ voyage.DateDepart ? voyage.DateDepart|date('Y-m-d') : '' }} - {{ voyage.HeureDepart ? voyage.HeureDepart|date('H:i:s') : '' }}</td>
+                            <td>Bohicon, Dassa</td>
+                            <td>5 000</td>
+                            <td>  <span style="color: red; font-size: x-small"> Places disponible : 56</span> </td>
+                            <td>
+                                <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal" href= {{ path('reserver_ticket',{'id': voyage.id }) }}
+                                        data-trip-route-id={{ voyage.id }}
+                                > Réserver</button>
+
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    <script>
+        //reset trip information with modal hidden
+        $("#myModal").on('hidden.bs.modal', function(event){
+            trip_id_no.val('');
+            trip_route_id.val('');
+            fleet_registration_id.val('');
+            fleet_type_id.val('');
+            total_seat.val('');
+            seat_number.val('');
+            price.val('');
+            offer_code.val('');
+            discount.val('');
+            booking_date.val('');
+            seatPreview.html('---');
+            pricePreview.html('0');
+            pricechild.html('0');
+            priceadult.html('0');
+            pricespecial.html('0');
+            totalPreview.html('0');
+            discountPreview.html('0');
+            grandTotalPreview.html('0');
+            outputPreview.addClass('hide').removeClass('alert-success').removeClass('alert-danger').html('');
+            history.go(0);
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,194 @@
+{% extends 'base_admin.html.twig' %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-md-offset-2 col-sm-offset-2">
+            <div class="panel panel-bd lobidrag">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <h4>
+                            <a href="{{ path('voyages_voyages_index') }}" class="btn btn-sm btn-success" title="List">
+                                <i class="fa fa-list"></i>
+                                Liste</a>
+                            {# <?php if($fleet_type->id): ?> #}
+                            {# <a href="<?php echo base_url('fleet/fleet_type/form') ?>" class="btn btn-sm btn-info" #}
+                            {# title="Add"><i class="fa fa-plus"></i> <?php echo display('add') ?></a> #}
+                            {# <?php endif; ?> #}
+                        </h4>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    {{ include('admin/reservation/_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block javascript %}
+<script>
+    jQuery(document).ready(function () {
+    $('#infos_voyage').hide()
+})
+    function infosvoyages(e, elem){
+    e.preventDefault();
+    var $voyages_id = $(elem).val();
+    // var parent = $(elem).closest('tr');
+    // alert(tel);
+    // if(tel.length > 3){
+    $.ajax({
+    type: 'get',
+    // url: Routing.generate('ajax_info_voyages_reservation', {id: voyages_id}),
+    url : "/requete-ajax/voyages-encours/"+$voyages_id,
+    dataType: "json",
+    // data: {
+    //     term: request.term
+    // },
+    success: function (data) {
+
+    if(data.success) {
+    donne = data.data
+    $('#infos_voyage').show()
+    $('#reservation_DateDepart').readOnly
+    $('#reservation_LieuDepart').readOnly
+    $('#reservation_Destination').readOnly
+    $('#reservation_NbrePlace').readOnly
+    $('#reservation_NbrePlace').readOnly
+
+    $('#reservation_DateDepart').val(donne.dateDepart.date)
+    $('#reservation_LieuDepart').val(donne.depart)
+    $('#reservation_Destination').val(donne.destination)
+    $('#reservation_NbrePlace').val(donne.nbre_place)
+    $('#reservation_NbrePlace').val(donne.nbre_place)
+}
+
+    // parent.find('.vente_prix').val(data.prix);
+    // var newLink = document.createElement('a');
+
+}
+})
+    // }
+
+}
+    function prixEscale(e, elem){
+    e.preventDefault();
+    $('#reservation_Prix').val('')
+    var $voyages_id = $(elem).val();
+    var $idligne = 1;
+    var $depart_id =  $('#reservation_VilleDepart').val();
+    var $arrive_id =  $('#reservation_VilleArrivee').val();
+    // var parent = $(elem).closest('tr');
+    // alert(tel); reservation_VilleDepart reservation_VilleArrivee
+    // if(tel.length > 3){
+    $.ajax({
+    type: 'get',
+    // url: Routing.generate('ajax_info_voyages_reservation', {id: voyages_id}),
+    url : "/requete-ajax/prix-escale/"+$idligne+"/"+$depart_id+"/"+$arrive_id,
+    dataType: "json",
+    // data: {
+    //     term: request.term
+    // },
+    success: function (data) {
+    $('#reservation_Prix').val(data.price)
+
+    // parent.find('.vente_prix').val(data.prix);
+    // var newLink = document.createElement('a');
+
+}
+})
+    // }
+
+}
+
+    class LinkedSelect {
+
+    /**
+     * @param {HTMLSelectElement} $select
+     */
+    constructor($select) {
+
+    this.$select = $select
+    this.$target = document.querySelector(this.$select.dataset.target)
+    //this.$placeholder = this.$target.firstElementChild
+    // this.onChange = debounce(this.onChange.bind(this), 500)
+    this.onChange = this.onChange.bind(this)
+    this.$loader = null
+    this.cache = {}
+    this.$select.addEventListener('change', this.onChange)
+
+}
+
+    /**
+     * Se déclenche au changement de valeur d'un select
+     * @param {Event} e
+     */
+    onChange(e) {
+    if (e.target.value === '0') {
+
+    return
+}
+
+    this.loadOptions(e.target.value, (options) => {
+    this.$target.innerHTML = options
+    this.$target.insertBefore(this.$placeholder, this.$target.firstChild)
+    this.$target.selectedIndex = 0
+    this.$target.style.display = null
+
+})
+}
+
+    /**
+     * Charge les options à partir du serveur (ou du cache)
+     * @param {string} id
+     * @param callback
+     */
+    loadOptions(id, callback) {
+    if (this.cache[id]) {
+    callback(this.cache[id])
+    return
+}
+    this.showLoader()
+    let request = new XMLHttpRequest()
+    request.open('GET', this.$select.dataset.source.replace('id', id), true)
+    request.onload = () => {
+    if (request.status >= 200 && request.status < 400) {
+alert('ok')
+    let data = JSON.parse(request.responseText)
+    let options = data.reduce(function (acc, option) {
+    return acc + '<option value="' + option.value + '">' + option.label + '</option>'
+}, '')
+    this.cache[id] = options
+    this.hideLoader()
+    callback(options)
+} else {
+    alert('Impossible de charger la liste')
+}
+}
+    request.onerror = function () {
+    alert('Impossible de charger la liste')
+}
+    request.send()
+}
+
+    showLoader() {
+    this.$loader = document.createTextNode('Chargement...')
+    this.$target.parentNode.appendChild(this.$loader)
+}
+
+    hideLoader() {
+    if (this.$loader !== null) {
+    this.$loader.parentNode.removeChild(this.$loader)
+    this.$loader = null
+}
+}
+
+}
+
+
+    let $selects = document.querySelectorAll('.linked-select')
+    $selects.forEach(function ($select) {
+
+    new LinkedSelect($select)
+})
+</script>
+{% endblock %}
